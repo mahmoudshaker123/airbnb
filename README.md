@@ -14,7 +14,7 @@ This is a web application that allows users to search for, book, and list rental
 
 To install the project, follow these steps:
 
-1. Clone the repository using `git clone https://github.com/mahmoudshaker123/airbnb-clone.git`.
+1. Clone the repository using `git clone https://github.com/mahmoudshaker123/airbnb.git`.
 2. Install the required dependencies using `pip install -r requirements.txt`.
 3. Set up the database by running `python manage.py makemigrations` and `python manage.py migrate`.
 4. Create a superuser account using `python manage.py createsuperuser`.
