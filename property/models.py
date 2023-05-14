@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-class property(models.Model):
+class Property(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='Property/')
     price = models.IntegerField(default=0)
@@ -14,14 +15,14 @@ class property(models.Model):
         return self.name
        
  
- 
- 
-    
 class PropertyImages(models.Model):
-    property = models.ForeignKey(property, related_name='property_image', on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, related_name='property_image', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='propertyimages/')
     def __str__(self):
         return str(self.property)
+
+ 
+    
         
 
 class Place(models.Model):
@@ -37,3 +38,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
         
+        
+
+class PropertyReview(models.Model):
+    author = models.ForeignKey(User, related_name='review_author', on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, related_name='review_property', on_delete=models.CASCADE)
+    rate = models.IntegerField(default=0)
+    feedback = models.TextField(max_length=2000)
+    
