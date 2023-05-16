@@ -6,6 +6,7 @@ from .models import *
 
 class PropertyList(ListView):
     model = Property
+    paginate_by = 6 
     
 
 
