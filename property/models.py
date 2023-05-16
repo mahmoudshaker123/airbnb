@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.utils import timezone
+from django.utils.text import slugify
+
 
 # Create your models here.
 
@@ -12,9 +15,19 @@ class Property(models.Model):
     places = models.ForeignKey('Place', related_name='property_place', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', related_name='property_category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
+    slug = models.SlugField(null=True , blank=True)
+    
+    def save(self, *args, **kwargs):
+       if not self.slug:
+           self.slug = slugify(self.name)
+       super(Property, self).save(*args, **kwargs) # Call the real save() method
     
     def __str__(self):
         return self.name
+       
+       
+    def get_absolute_url(self):
+        return reverse("property:property_detail", kwargs={"slug": self.slug})
        
  
 class PropertyImages(models.Model):
