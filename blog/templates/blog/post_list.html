@@ -5,7 +5,7 @@
     
    
 
-    <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_4.jpg'%});">
+    <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_4.jpg'%}{% static 'images/bg_4.jpg'%});">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -33,7 +33,7 @@
               	<span class="tag">Tips, Travel</span>
                 <h3 class="heading mt-3"><a href="{{post.get_absolute_url}}">{{post}}</a></h3>
                 <div class="meta mb-3">
-                  <div><a href="#">{{post.created_at | date:'F j, Y'}}</a></div>
+                  <div><a href="#">{{ post.created_at | date:'F j, Y'}}</a></div>
                   <div><a href="#">{{post.author}}</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                 </div>
