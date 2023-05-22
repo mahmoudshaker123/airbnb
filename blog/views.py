@@ -11,6 +11,18 @@ from django.db.models import Q
 class PostList(ListView):
     model = Post
     paginate_by = 6
+    
+    def get_queryset(self):
+        name = self.request.GET.get('q','')
+        # filter tags by slug using Q class 
+        object_list = Post.objects.filter(
+            Q(title__icontains=name) | 
+             Q(description__icontains=name)
+        )
+        return object_list
+    
+    
+    
 
 class PostDetail(DetailView):
     model = Post
