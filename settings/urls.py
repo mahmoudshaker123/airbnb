@@ -4,5 +4,7 @@ from .views import *
 app_name = 'settings'
 
 urlpatterns = [
-    path('', home , name='home')
+    path('', home , name='home'),
+    path('search/', home_search , name='home_search'),
+
 ]
