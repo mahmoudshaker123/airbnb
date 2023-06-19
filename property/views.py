@@ -1,6 +1,6 @@
 from typing import Any, Dict
-from django.shortcuts import render
-from django.views.generic import ListView , DetailView
+from django.shortcuts import redirect, render
+from django.views.generic import ListView , DetailView , CreateView
 from .models import *
 from django.views.generic.edit import FormMixin
 from .forms import *
@@ -34,7 +34,12 @@ class PropertyDetail(FormMixin , DetailView):
             myform.user = request.user
             myform.save()
             
+            return redirect('/')
+        else:
+            print('not valid')
             
 
-
+class AddListing(CreateView):
+    pass
     
+

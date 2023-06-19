@@ -4,6 +4,8 @@ from .forms import UserForm , ProfileForm , UserCreateForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from property.models import *
+
 # Create your views here.
 
 def signup(request):
@@ -53,3 +55,12 @@ def profile_edit(request):
         'user_form' : user_form , 
         'profile_form' : profile_form
     })
+    
+    
+
+def myreservation(request):
+    property_list = PropertyBook.objects.filter(user=request.user)
+    return render(request , 'profile/reservations.html', {'property_list' : property_list})
+
+def mylisting(request):
+    pass
