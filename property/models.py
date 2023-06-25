@@ -8,6 +8,7 @@ from django.utils.text import slugify
 # Create your models here.
 
 class Property(models.Model):
+    owner = models.ForeignKey(User, related_name='property_owner', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='Property/')
     price = models.IntegerField(default=0)

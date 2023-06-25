@@ -63,4 +63,5 @@ def myreservation(request):
     return render(request , 'profile/reservations.html', {'property_list' : property_list})
 
 def mylisting(request):
-    pass
+    property_list = Property.objects.filter(owner=request.user)
+    return render(request , 'profile/mylisting.html', {'property_list' : property_list})
